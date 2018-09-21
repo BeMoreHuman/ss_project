@@ -6,7 +6,9 @@ let arrowDown = document.querySelector('.arrow-down'),
     aboutSection = document.getElementById('about'),
     resumeSection = document.getElementById('resume'),
     worksSection = document.getElementById('works'),
-    contactSection = document.getElementById('contact');
+    contactSection = document.getElementById('contact'),
+    burgerButton = document.querySelector('.menu-burger__wrap')
+    mobileMenu = document.querySelector('.menu-mobile__wrap');
 
 arrowDown.addEventListener('click', function() {
   scrollToElem({
@@ -52,6 +54,32 @@ toContact.addEventListener('click', function(e) {
     margin: 0
   });
 })
+
+burgerButton.addEventListener('click', function () {
+  if (burgerButton.classList.contains('menu-burger__wrap--active')) {
+      closeMobileMenu();
+  }
+  else {
+      openMobileMenu();
+  }
+});
+function openMobileMenu() {
+  window.addEventListener('resize', onWindowResize);
+  burgerButton.classList.add('menu-burger__wrap--active');
+  mobileMenu.classList.add('menu-mobile__wrap--active');
+  document.body.classList.add('overflow-hidden');
+}
+function closeMobileMenu() {
+  window.removeEventListener('resize', onWindowResize);
+  burgerButton.classList.remove('menu-burger__wrap--active');
+  mobileMenu.classList.remove('menu-mobile__wrap--active');
+  document.body.classList.remove('overflow-hidden');
+}
+function onWindowResize() {
+  if (window.innerWidth > 767) {
+      closeMobileMenu();
+  }
+}
 
 function animation(options) {
   var start = Date.now();
