@@ -7,9 +7,55 @@ let arrowDown = document.querySelector('.arrow-down'),
     resumeSection = document.getElementById('resume'),
     worksSection = document.getElementById('works'),
     contactSection = document.getElementById('contact'),
-    burgerButton = document.querySelector('.menu-burger__wrap')
-    mobileMenu = document.querySelector('.menu-mobile__wrap');
+    burgerButton = document.querySelector('.menu-burger__wrap'),
+    mobileMenu = document.querySelector('.menu-mobile__wrap'),
+    toAboutMobile = document.getElementById('jsAboutMobile'),
+    toResumeMobile = document.getElementById('jsResumeMobile'),
+    toWorksMobile = document.getElementById('jsWorksMobile'),
+    toContactMobile = document.getElementById('jsContactMobile');
 
+// functionality for navigation in Mobile_menu
+toAboutMobile.addEventListener('click', function(e) {
+  e.preventDefault();
+  closeMobileMenu();
+  scrollToElem({
+    elem: aboutSection,
+    duration: 600,
+    timingFunc: null,
+    margin: 0
+  });
+})
+toResumeMobile.addEventListener('click', function(e) {
+  e.preventDefault();
+  closeMobileMenu();
+  scrollToElem({
+    elem: resumeSection,
+    duration: 600,
+    timingFunc: null,
+    margin: 0
+  });
+})
+toWorksMobile.addEventListener('click', function(e) {
+  e.preventDefault();
+  closeMobileMenu();
+  scrollToElem({
+    elem: worksSection,
+    duration: 600,
+    timingFunc: null,
+    margin: 0
+  });
+})
+toContactMobile.addEventListener('click', function(e) {
+  e.preventDefault();
+  closeMobileMenu();
+  scrollToElem({
+    elem: contactSection,
+    duration: 600,
+    timingFunc: null,
+    margin: 0
+  });
+})
+// functionality for navigation arrow_down
 arrowDown.addEventListener('click', function() {
   scrollToElem({
       elem: aboutSection,
@@ -18,6 +64,7 @@ arrowDown.addEventListener('click', function() {
       margin: 0
   });
 })
+// functionality for navigation in Desktop_menu
 toAbout.addEventListener('click', function(e) {
   e.preventDefault();
   scrollToElem({
@@ -25,7 +72,7 @@ toAbout.addEventListener('click', function(e) {
     duration: 600,
     timingFunc: null,
     margin: 0
-});
+  });
 })
 toResume.addEventListener('click', function(e) {
   e.preventDefault();
@@ -54,7 +101,7 @@ toContact.addEventListener('click', function(e) {
     margin: 0
   });
 })
-
+// functionality for burger_btn > open/close Mobile_menu
 burgerButton.addEventListener('click', function () {
   if (burgerButton.classList.contains('menu-burger__wrap--active')) {
       closeMobileMenu();
@@ -80,7 +127,7 @@ function onWindowResize() {
       closeMobileMenu();
   }
 }
-
+// functions that are responsible for scrolling with smooth animation
 function animation(options) {
   var start = Date.now();
   requestAnimationFrame(function animate() {
@@ -135,6 +182,7 @@ function scrollToElem(options) {
   }
 
 };
+// This functions isn't using for now.
 function pageScroll(elem) {
   let yOffset = getOffsetCoords(elem).top;
 
