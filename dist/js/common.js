@@ -129,9 +129,9 @@ function onWindowResize() {
 }
 // functions that are responsible for scrolling with smooth animation
 function animation(options) {
-  var start = Date.now();
+  const start = Date.now();
   requestAnimationFrame(function animate() {
-      var timePassed = Date.now() - start,
+      let timePassed = Date.now() - start,
           timeFraction = timePassed / options.duration,
           progress;
       if (timeFraction > 1) timeFraction = 1;
@@ -150,7 +150,7 @@ function scrollToElem(options) {
             margin: number
         }
    */
-  var elem = options.elem,
+  let elem = options.elem,
       duration = options.duration || 1000,
       timingFunc = options.timingFunc || swing,
       margin = options.margin || 0;
@@ -160,7 +160,7 @@ function scrollToElem(options) {
   }
   if (!elem) return;
 
-  var elemPos = elem.getBoundingClientRect(),
+  const elemPos = elem.getBoundingClientRect(),
       startY = window.pageYOffset,
       stopY = startY + elemPos.top,
       way = stopY - startY - margin;
@@ -184,7 +184,7 @@ function scrollToElem(options) {
 };
 // This functions isn't using for now.
 function pageScroll(elem) {
-  let yOffset = getOffsetCoords(elem).top;
+  const yOffset = getOffsetCoords(elem).top;
 
   window.scrollTo({
     top: yOffset,
@@ -192,7 +192,7 @@ function pageScroll(elem) {
   }); 
 }
 function getOffsetCoords(elem) {
-  var box = elem.getBoundingClientRect();
+  const box = elem.getBoundingClientRect();
 
   return {
     top: box.top + pageYOffset,
